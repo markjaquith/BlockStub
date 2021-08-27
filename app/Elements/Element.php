@@ -5,13 +5,14 @@ namespace BlockStub\Elements;
 use \BlockStub\Conditions\ConditionContract;
 
 abstract class Element implements NodeContract {
+	use Traits\HasChildren;
+
 	public string $tag = '';
 	public Attributes $attributes;
-	public Nodes $children;
 
 	public function __construct(string $text = '') {
 		$this->attributes = new Attributes();
-		$this->children = new Nodes();
+		$this->bootHasChildren();
 
 		if ($text) {
 			$this->addText($text);
@@ -51,24 +52,5 @@ abstract class Element implements NodeContract {
 		$this->attributes->set($name, $value);
 
 		return $this;
-	}
-
-	public function addChild(NodeContract $node): NodeContract {
-		$this->children->add($node);
-
-		return $this;
-	}
-
-	public function addText(string $text): self {
-		$this->children->add(new Text($text));
-
-		return $this;
-	}
-
-	public function if(ConditionContract $condition): NodeContract {
-		$conditionElement = new Condition($condition);
-		$this->addChild($conditionElement);
-
-		return $conditionElement;
 	}
 }

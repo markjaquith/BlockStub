@@ -10,18 +10,21 @@ class AnnounceRenderingEngineBlock extends Block {
 		$isPhp = new IsPhp();
 		$isReact = new IsReact();
 
-		$p = P::make();
-		$p->addText('This sentence was rendered on both engines. ');
+		$p = P::make('This sentence was rendered on both engines. ');
 		
+		// Chaining with array.
 		$p->if($isPhp)
-			->addText('But this one was only rendered on ')
-			->addChild(B::make('PHP'))
-			->addText('.');
+			->add([
+				'But this one was only rendered on ',
+				B::make('PHP'),
+				'.'
+			]);
 
+		// Chaining with individual calls.
 		$p->if($isReact)
-			->addText('But this one was only rendered on ')
-			->addChild(B::make('React'))
-			->addText('.');
+			->add('But this one was only rendered on ')
+			->add(B::make('React'))
+			->add('.');
 
 		return $p;
 	}

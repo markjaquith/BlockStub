@@ -5,12 +5,13 @@ namespace BlockStub\Elements;
 use BlockStub\Conditions\ConditionContract;
 
 class Condition implements NodeContract {
+	use Traits\HasChildren;
+
 	protected ConditionContract $condition;
-	protected Nodes $children;
 
 	public function __construct(ConditionContract $condition) {
 		$this->condition = $condition;
-		$this->children = new Nodes();
+		$this->bootHasChildren();
 	}
 
 	public function renderPhp(): string {
@@ -23,17 +24,5 @@ class Condition implements NodeContract {
 			$this->condition->evaluateReact(),
 			$this->children->renderReact()
 		);
-	}
-
-	public function addChild(NodeContract $node): self {
-		$this->children->add($node);
-
-		return $this;
-	}
-
-	public function addText(string $text): self {
-		$this->children->add(new Text($text));
-
-		return $this;
 	}
 }
