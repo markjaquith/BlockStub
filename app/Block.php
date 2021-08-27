@@ -4,29 +4,25 @@ namespace BlockStub;
 
 class Block implements BlockContract {
 	protected string $handle;
-	protected string $name;
+	protected string $title;
 	protected array $attributes;
 
-	public function __construct(string $handle, string $name, array $attributes = []) {
+	public function __construct(string $handle, string $title, array $attributes = []) {
 		$this->handle = $handle;
-		$this->name = $name;
+		$this->title = $title;
 		$this->attributes = $attributes;
 	}
 
-	public function renderJs(): array {
-		return ['p', '"Extend renderJs()"'];
-	}
-
-	public function renderPhp(): string {
-		return "<p>Extend renderPhp()</p>";
+	public function render(): Elements\NodeContract {
+		return (new Elements\P)->addText('Extend the render() method');
 	}
 
 	public function getHandle(): string {
 		return $this->handle;
 	}
 
-	public function getName(): string {
-		return $this->name;
+	public function getTitle(): string {
+		return $this->title;
 	}
 
 	public function getAttributes(): array {

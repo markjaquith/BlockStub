@@ -3,9 +3,8 @@
 namespace BlockStub;
 
 interface BlockContract {
-	public function renderJs(): array;
-	public function renderPhp(): string;
+	public function render(): Elements\NodeContract;
 	public function getHandle(): string;
-	public function getName(): string;
+	public function getTitle(): string;
 	public function getAttributes(): array;
 }
