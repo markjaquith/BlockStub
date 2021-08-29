@@ -2,9 +2,7 @@
 
 namespace BlockStub;
 
-use BlockStub\Elements\NodeContract;
-
-class Attribute implements NodeContract {
+class Attribute implements Renderable {
 	public string $name;
 	public string $type;
 	public string $default = '';

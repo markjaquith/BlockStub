@@ -2,7 +2,9 @@
 
 namespace BlockStub\Elements;
 
-class Fragment implements NodeContract {
+use BlockStub\Renderable;
+
+class Fragment implements Renderable {
 	use Traits\HasChildren;
 
 	public function __construct() {

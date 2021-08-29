@@ -2,9 +2,10 @@
 
 namespace BlockStub\Elements;
 
+use BlockStub\Renderable;
 use BlockStub\Conditions\ConditionContract;
 
-class Condition implements NodeContract {
+class Condition implements Renderable {
 	use Traits\HasChildren;
 
 	protected ConditionContract $condition;

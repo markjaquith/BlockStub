@@ -2,10 +2,12 @@
 
 namespace BlockStub\Elements;
 
+use BlockStub\Renderable;
+
 class Nodes {
 	private array $nodes = [];
 
-	public function add(NodeContract $node): NodeContract {
+	public function add(Renderable $node): Renderable {
 		$this->nodes[] = $node;
 
 		return $node;

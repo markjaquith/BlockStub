@@ -2,10 +2,9 @@
 
 namespace BlockStub;
 
-use BlockStub\Elements\NodeContract;
 use BlockStub\Elements\Element;
 
-class Wrap implements NodeContract {
+class Wrap implements Renderable {
 	protected Element $element;
 
 	public function __construct(Element $element) {

@@ -3,7 +3,7 @@
 namespace BlockStub;
 
 use BlockStub\Conditions\{IsPhp, IsReact};
-use BlockStub\Elements\{NodeContract, P, B};
+use BlockStub\Elements\{P, B};
 
 class AnnounceRenderingEngineBlock extends Block {
 	protected string $title = 'Announce Rendering Engine';

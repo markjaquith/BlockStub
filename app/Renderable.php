@@ -2,4 +2,7 @@
 
 namespace BlockStub;
 
-interface Renderable {}
+interface Renderable {
+	public function renderPhp(array $attributes): string;
+	public function renderReact(): string;
+}

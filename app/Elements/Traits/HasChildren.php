@@ -2,7 +2,8 @@
 
 namespace BlockStub\Elements\Traits;
 
-use BlockStub\Elements\{Nodes, NodeContract, Condition, Text};
+use BlockStub\Elements\{Nodes, Condition, Text};
+use BlockStub\Renderable;
 use BlockStub\Conditions\ConditionContract;
 
 trait HasChildren {
@@ -12,8 +13,8 @@ trait HasChildren {
 		$this->children = new Nodes();
 	}
 
-	public function add($node): NodeContract {
-		if ($node instanceof NodeContract) {
+	public function add($node): Renderable {
+		if ($node instanceof Renderable) {
 			$this->children->add($node);
 		} elseif (is_string($node)) {
 			$this->addText($node);
@@ -25,7 +26,7 @@ trait HasChildren {
 			// Do nothing.
 		} else {
 			var_dump($node);
-			throw new \Exception('::add() can only accept NodeContract, string, NodeContract[], or string[]');
+			throw new \Exception('::add() can only accept Renderable, string, Renderable[], or string[]');
 		}
 
 		return $this;
@@ -41,7 +42,7 @@ trait HasChildren {
 		return $this;
 	}
 
-	public function if(ConditionContract $condition): NodeContract {
+	public function if(ConditionContract $condition): Renderable {
 		$conditionElement = new Condition($condition);
 		$this->add($conditionElement);
 

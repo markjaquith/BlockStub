@@ -2,7 +2,9 @@
 
 namespace BlockStub\Elements;
 
-class HtmlAttributes {
+use BlockStub\Renderable;
+
+class HtmlAttributes implements Renderable {
 	const VALUELESS = 'valueless';
 	private array $attributes = [];
 
@@ -78,7 +80,7 @@ class HtmlAttributes {
 		return $map[$attribute] ?? $attribute;
 	}
 
-	public function renderHtml(): string {
+	public function renderPhp(array $attributes): string {
 		$segments = [];
 
 		foreach ($this->attributes as $key => $value) {

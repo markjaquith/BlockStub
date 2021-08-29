@@ -3,8 +3,9 @@
 namespace BlockStub\Elements;
 
 use BlockStub\Attribute;
+use BlockStub\Renderable;
 
-class TextControl implements NodeContract {
+class TextControl implements Renderable {
 	protected Attribute $attribute;
 
 	public function __construct(Attribute $attribute) {

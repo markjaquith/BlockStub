@@ -2,7 +2,9 @@
 
 namespace BlockStub\Elements;
 
-class UnixTimestamp implements NodeContract {
+use BlockStub\Renderable;
+
+class UnixTimestamp implements Renderable {
 	public function renderPhp(array $attributes): string {
 		return time();
 	}

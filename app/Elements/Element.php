@@ -3,9 +3,9 @@
 namespace BlockStub\Elements;
 
 use BlockStub\Attribute;
-use \BlockStub\Conditions\ConditionContract;
+use BlockStub\Renderable;
 
-abstract class Element implements NodeContract {
+abstract class Element implements Renderable {
 	use Traits\HasChildren;
 
 	public string $tag = '';
@@ -34,8 +34,8 @@ abstract class Element implements NodeContract {
 		return $this;
 	}
 
-	private function wrapPhp(string $content): string {
-		$attributes = $this->attributes->renderHtml();
+	private function wrapPhp(string $content, array $attributes): string {
+		$attributes = $this->attributes->renderPhp($attributes);
 		$attributes = $attributes ? ' ' . $attributes : '';
 
 		return "<{$this->tag}{$attributes}>{$content}</{$this->tag}>";
@@ -60,7 +60,8 @@ abstract class Element implements NodeContract {
 
 	public function renderPhp(array $attributes): string {
 		return $this->wrapPhp(
-			$this->getChildren()->renderPhp($attributes)
+			$this->getChildren()->renderPhp($attributes),
+			$attributes
 		);
 	}
 
