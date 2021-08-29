@@ -9,14 +9,11 @@ class AnnounceRenderingEngineBlock extends Block {
 	protected string $title = 'Announce Rendering Engine';
 	protected string $handle = 'rendering-engine';
 
-	public function render(): Elements\NodeContract {
-		$isPhp = new IsPhp();
-		$isReact = new IsReact();
-
+	public function render(): Elements\Element {
 		$p = P::make('This sentence was rendered on both engines. ');
 		
 		// Chaining with array.
-		$p->if($isPhp)
+		$p->if(new IsPhp)
 			->add([
 				'But this one was only rendered on ',
 				B::make('PHP'),
@@ -24,7 +21,7 @@ class AnnounceRenderingEngineBlock extends Block {
 			]);
 
 		// Chaining with individual calls.
-		$p->if($isReact)
+		$p->if(new IsReact)
 			->add('But this one was only rendered on ')
 			->add(B::make('React'))
 			->add('.');

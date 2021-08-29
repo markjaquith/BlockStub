@@ -15,14 +15,14 @@ class Condition implements NodeContract {
 	}
 
 	public function renderPhp(array $attributes): string {
-		return $this->condition->evaluatePhp($attributes) ? $this->children->renderPhp($attributes) : '';
+		return $this->condition->evaluatePhp($attributes) ? $this->getChildren()->renderPhp($attributes) : '';
 	}
 
 	public function renderReact(): string {
 		return sprintf(
 			'(%s) && (%s)',
 			$this->condition->evaluateReact(),
-			$this->children->renderReact()
+			$this->getChildren()->renderReact()
 		);
 	}
 }

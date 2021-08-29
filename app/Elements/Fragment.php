@@ -10,11 +10,11 @@ class Fragment implements NodeContract {
 	}
 
 	public function renderPhp(array $attributes): string {
-		return $this->children->renderPhp($attributes);
+		return $this->getChildren()->renderPhp($attributes);
 	}
 
 	public function renderReact(): string {
-		return sprintf('el(F, null, %s)', $this->children->renderReact());
+		return sprintf('el(F, null, %s)', $this->getChildren()->renderReact());
 	}
 
 	static public function make(): self {

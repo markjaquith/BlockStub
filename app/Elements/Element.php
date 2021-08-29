@@ -12,13 +12,11 @@ abstract class Element implements NodeContract {
 	protected HtmlAttributes $attributes;
 	protected ?Attribute $editableAttribute = null;
 
-	public function __construct(string $text = '') {
+	public function __construct($input = null) {
 		$this->attributes = new HtmlAttributes();
 		$this->bootHasChildren();
 
-		if ($text) {
-			$this->addText($text);
-		}
+		$this->add($input);
 	}
 
 	static public function make(...$args): Element {
@@ -62,13 +60,13 @@ abstract class Element implements NodeContract {
 
 	public function renderPhp(array $attributes): string {
 		return $this->wrapPhp(
-			$this->children->renderPhp($attributes)
+			$this->getChildren()->renderPhp($attributes)
 		);
 	}
 
 	public function renderReact(): string {
 		return $this->wrapReact(
-			$this->children->renderReact()
+			$this->getChildren()->renderReact()
 		);
 	}
 
@@ -76,5 +74,9 @@ abstract class Element implements NodeContract {
 		$this->attributes->set($name, $value);
 
 		return $this;
+	}
+
+	public function getAttributes(): HtmlAttributes {
+		return $this->attributes;
 	}
 }

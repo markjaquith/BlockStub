@@ -13,8 +13,8 @@ class GreetingBlock extends Block {
 		],
 	];
 
-	public function render(): Elements\NodeContract {
-		return Elements\P::make()->add([
+	public function render(): Elements\Element {
+		return new Elements\P([
 			'Hello ',
 			Elements\B::makeEditable($this->getAttribute('name')),
 			'!',

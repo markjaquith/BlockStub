@@ -32,6 +32,7 @@ final class BlockFactory {
 		$handle = $block->getHandle();
 		$fullHandle = 'blockstub/' . $handle;
 		$rootElement = $block->render();
+		$wrapElement = new Wrap($rootElement);
 
 		$jsHandle = json_encode($handle);
 		$jsFullHandle = json_encode($fullHandle);
@@ -39,7 +40,7 @@ final class BlockFactory {
 		$dir = dirname($this->file);
 	
 		$zeroJs = '0.js';
-		$jsRender = $rootElement->renderReact();
+		$jsRender = $wrapElement->renderReact();
 		$attributes = $block->getAttributes();
 		$jsAttributes = json_encode($attributes);
 		$jsTitle = json_encode($block->getTitle());
@@ -74,6 +75,7 @@ final class BlockFactory {
 					icon: 'plugins-checked',
 					category: 'widgets',
 					attributes: $jsAttributes,
+					apiVersion: 2,
 					supports: {
 						html: false,
 					},
@@ -103,7 +105,7 @@ final class BlockFactory {
 		// );
 	
 		register_block_type($fullHandle, [
-			'render_callback' => [$rootElement, 'renderPhp'],
+			'render_callback' => [$wrapElement, 'renderPhp'],
 			'editor_script' => $handle . '-block-editor',
 			// 'editor_style'  => $handle . '-block-editor',
 			// 'style'         => $handle . '-block',

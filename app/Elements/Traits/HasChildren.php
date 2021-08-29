@@ -6,7 +6,7 @@ use BlockStub\Elements\{Nodes, NodeContract, Condition, Text};
 use BlockStub\Conditions\ConditionContract;
 
 trait HasChildren {
-	public Nodes $children;
+	protected Nodes $children;
 
 	public function bootHasChildren() {
 		$this->children = new Nodes();
@@ -21,12 +21,18 @@ trait HasChildren {
 			foreach ($node as $_node) {
 				$this->add($_node);
 			}
+		} elseif (is_null($node)) {
+			// Do nothing.
 		} else {
 			var_dump($node);
 			throw new \Exception('::add() can only accept NodeContract, string, NodeContract[], or string[]');
 		}
 
 		return $this;
+	}
+
+	public function getChildren(): Nodes {
+		return $this->children;
 	}
 
 	public function addText(string $text): self {
