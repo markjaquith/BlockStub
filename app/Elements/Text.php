@@ -2,10 +2,10 @@
 
 namespace BlockStub\Elements;
 
-use BlockStub\Renderable;
+use BlockStub\Node;
 use BlockStub\BlockContract;
 
-class Text implements Renderable {
+class Text extends Node {
 	public function __construct($text) {
 		$this->text = $text;
 	}

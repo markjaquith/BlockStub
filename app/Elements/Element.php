@@ -2,11 +2,10 @@
 
 namespace BlockStub\Elements;
 
-use BlockStub\Attribute;
-use BlockStub\Renderable;
+use BlockStub\Node;
 use BlockStub\BlockContract;
 
-abstract class Element implements Renderable {
+abstract class Element extends Node {
 	use Traits\HasChildren;
 
 	public string $tag = '';
@@ -18,10 +17,6 @@ abstract class Element implements Renderable {
 		$this->bootHasChildren();
 
 		$this->add($input);
-	}
-
-	static public function make(...$args): Element {
-		return new static(...$args);
 	}
 
 	static public function makeEditable(string $attribute): Element {
