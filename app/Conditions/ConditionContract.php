@@ -2,9 +2,7 @@
 
 namespace BlockStub\Conditions;
 
-use BlockStub\Elements\NodeContract;
-
 interface ConditionContract {
-	public function evaluatePhp(): bool;
+	public function evaluatePhp(array $attributes): bool;
 	public function evaluateReact(): string;
 }

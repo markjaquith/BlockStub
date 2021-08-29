@@ -2,7 +2,7 @@
 
 namespace BlockStub\Elements;
 
-class Attributes {
+class HtmlAttributes {
 	const VALUELESS = 'valueless';
 	private array $attributes = [];
 

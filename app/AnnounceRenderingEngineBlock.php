@@ -6,6 +6,9 @@ use BlockStub\Conditions\{IsPhp, IsReact};
 use BlockStub\Elements\{NodeContract, P, B};
 
 class AnnounceRenderingEngineBlock extends Block {
+	protected string $title = 'Announce Rendering Engine';
+	protected string $handle = 'rendering-engine';
+
 	public function render(): Elements\NodeContract {
 		$isPhp = new IsPhp();
 		$isReact = new IsReact();

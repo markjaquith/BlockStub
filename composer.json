@@ -14,5 +14,7 @@
 			"BlockStub\\": "app/"
 		}
 	},
-	"require": {}
+	"require": {
+      "ext-json": "*"
+    }
 }

@@ -15,11 +15,11 @@ class Nodes {
 		return $this->nodes;
 	}
 
-	public function renderPhp(): string {
-		return implode('', array_map(fn ($node) => $node->renderPhp(), $this->nodes));
+	public function renderPhp(array $attributes): string {
+		return implode('', array_map(fn ($node) => $node->renderPhp($attributes), $this->nodes));
 	}
 
 	public function renderReact(): string {
-		return 'el(F, null, [' . implode(',', array_map(fn ($node) => $node->renderReact(), $this->nodes)) . "])";
+		return '[' . implode(',', array_map(fn ($node) => $node->renderReact(), $this->nodes)) . ']';
 	}
 }

@@ -10,7 +10,12 @@ final class BlockFactory {
 		$this->file = $file;
 	}
 
-	public static function boot($file) {
+	/**
+	 * @param string $file
+	 *
+	 * @uses registerBlocks
+	 */
+	public static function boot(string $file) {
 		$factory = new self($file);
 		add_action('init', [$factory, 'registerBlocks']);
 	}
@@ -19,8 +24,8 @@ final class BlockFactory {
 		do_action(self::HOOK, $this);
 	}
 
-	public function addBlock(BlockContract $block): self {
-		if ( ! function_exists( 'register_block_type' ) ) {
+	public function add(BlockContract $block): self {
+		if (!function_exists( 'register_block_type')) {
 			return $this;
 		}
 	
@@ -61,9 +66,9 @@ final class BlockFactory {
 					useRef,
 					useMemo,
 					useState,
-			 } = wp.element;
-				const F = Fragment;
-	
+			 } = wp.element
+				const F = Fragment
+
 				wp.blocks.registerBlockType($jsFullHandle, {
 					title: $jsTitle,
 					icon: 'plugins-checked',
@@ -73,6 +78,7 @@ final class BlockFactory {
 						html: false,
 					},
 					edit: function(props) {
+						const { attributes, setAttributes } = props 
 						return $jsRender
 					},
 					save: () => null,

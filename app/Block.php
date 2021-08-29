@@ -2,15 +2,26 @@
 
 namespace BlockStub;
 
-class Block implements BlockContract {
+abstract class Block implements BlockContract {
 	protected string $handle;
 	protected string $title;
-	protected array $attributes;
+	protected BlockAttributes $blockAttributes;
+	protected array $attributes = [];
 
-	public function __construct(string $handle, string $title, array $attributes = []) {
-		$this->handle = $handle;
-		$this->title = $title;
-		$this->attributes = $attributes;
+	public function __construct() {
+		if (!isset($this->handle)) {
+			wp_die('Block ' . static::class . ' must provide a $handle');
+		} elseif (!isset($this->title)) {
+			wp_die('Block ' . static::class . ' must provide a $title');
+		}
+
+		$this->blockAttributes = new BlockAttributes();
+
+		foreach ($this->attributes as $key => $data) {
+			$this->blockAttributes->add(
+				new Attribute($key, $data['type'] ?? null, $data['default'] ?? null)
+			);
+		}
 	}
 
 	public function render(): Elements\NodeContract {
@@ -26,6 +37,10 @@ class Block implements BlockContract {
 	}
 
 	public function getAttributes(): array {
-		return $this->attributes;
+		return $this->blockAttributes->all();
+	}
+
+	public function getAttribute(string $name): Attribute {
+		return $this->blockAttributes->get($name);
 	}
 }

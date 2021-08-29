@@ -18,6 +18,7 @@ BlockFactory::boot(__FILE__);
 
 add_action('blockstub_init', function (BlockFactory $blocks) {
 	$blocks
-		->addBlock(new UnixTimestampBlock('unix-timestamp', 'Unix Timestamp'))
-		->addBlock(new AnnounceRenderingEngineBlock('rendering-engine', 'Rendering Engine'));
+		->add(new UnixTimestampBlock)
+		->add(new AnnounceRenderingEngineBlock)
+		->add(new GreetingBlock);
 });

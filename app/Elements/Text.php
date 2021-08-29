@@ -7,7 +7,7 @@ class Text implements NodeContract {
 		$this->text = $text;
 	}
 
-	public function renderPhp(): string {
+	public function renderPhp(array $attributes): string {
 		return $this->text;
 	}
 

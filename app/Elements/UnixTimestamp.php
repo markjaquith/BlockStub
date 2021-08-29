@@ -3,7 +3,7 @@
 namespace BlockStub\Elements;
 
 class UnixTimestamp implements NodeContract {
-	public function renderPhp(): string {
+	public function renderPhp(array $attributes): string {
 		return time();
 	}
 

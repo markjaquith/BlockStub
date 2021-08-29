@@ -14,8 +14,8 @@ class Condition implements NodeContract {
 		$this->bootHasChildren();
 	}
 
-	public function renderPhp(): string {
-		return $this->condition->evaluatePhp() ? $this->children->renderPhp() : '';
+	public function renderPhp(array $attributes): string {
+		return $this->condition->evaluatePhp($attributes) ? $this->children->renderPhp($attributes) : '';
 	}
 
 	public function renderReact(): string {

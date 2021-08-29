@@ -22,6 +22,7 @@ trait HasChildren {
 				$this->add($_node);
 			}
 		} else {
+			var_dump($node);
 			throw new \Exception('::add() can only accept NodeContract, string, NodeContract[], or string[]');
 		}
 
