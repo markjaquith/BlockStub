@@ -3,6 +3,7 @@
 namespace BlockStub\Elements;
 
 use BlockStub\Renderable;
+use BlockStub\BlockContract;
 
 class Fragment implements Renderable {
 	use Traits\HasChildren;
@@ -11,8 +12,8 @@ class Fragment implements Renderable {
 		$this->bootHasChildren();
 	}
 
-	public function renderPhp(array $attributes): string {
-		return $this->getChildren()->renderPhp($attributes);
+	public function renderPhp(BlockContract $block): string {
+		return $this->getChildren()->renderPhp($block);
 	}
 
 	public function renderReact(): string {

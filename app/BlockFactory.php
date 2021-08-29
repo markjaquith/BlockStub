@@ -105,7 +105,11 @@ final class BlockFactory {
 		// );
 	
 		register_block_type($fullHandle, [
-			'render_callback' => [$wrapElement, 'renderPhp'],
+			'render_callback' => function ($attributes = []) use ($wrapElement, $block) {
+				$block->setAttributes($attributes);
+
+				return call_user_func([$wrapElement, 'renderPhp'], $block);
+			},
 			'editor_script' => $handle . '-block-editor',
 			// 'editor_style'  => $handle . '-block-editor',
 			// 'style'         => $handle . '-block',

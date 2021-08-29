@@ -3,6 +3,7 @@
 namespace BlockStub\Elements;
 
 use BlockStub\Renderable;
+use BlockStub\BlockContract;
 
 class Nodes {
 	private array $nodes = [];
@@ -17,8 +18,8 @@ class Nodes {
 		return $this->nodes;
 	}
 
-	public function renderPhp(array $attributes): string {
-		return implode('', array_map(fn ($node) => $node->renderPhp($attributes), $this->nodes));
+	public function renderPhp(BlockContract $block): string {
+		return implode('', array_map(fn ($node) => $node->renderPhp($block), $this->nodes));
 	}
 
 	public function renderReact(): string {

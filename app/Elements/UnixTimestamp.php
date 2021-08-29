@@ -3,9 +3,10 @@
 namespace BlockStub\Elements;
 
 use BlockStub\Renderable;
+use BlockStub\BlockContract;
 
 class UnixTimestamp implements Renderable {
-	public function renderPhp(array $attributes): string {
+	public function renderPhp(BlockContract $block): string {
 		return time();
 	}
 

@@ -3,13 +3,14 @@
 namespace BlockStub\Elements;
 
 use BlockStub\Renderable;
+use BlockStub\BlockContract;
 
 class Text implements Renderable {
 	public function __construct($text) {
 		$this->text = $text;
 	}
 
-	public function renderPhp(array $attributes): string {
+	public function renderPhp(BlockContract $block): string {
 		return $this->text;
 	}
 

@@ -3,6 +3,6 @@
 namespace BlockStub;
 
 interface Renderable {
-	public function renderPhp(array $attributes): string;
+	public function renderPhp(BlockContract $block): string;
 	public function renderReact(): string;
 }

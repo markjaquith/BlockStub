@@ -2,8 +2,10 @@
 
 namespace BlockStub\Conditions;
 
+use BlockStub\BlockContract;
+
 class IsReact implements ConditionContract {
-	public function evaluatePhp(array $attributes): bool {
+	public function evaluatePhp(BlockContract $block): bool {
 		return false;
 	}
 

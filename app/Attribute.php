@@ -6,6 +6,7 @@ class Attribute implements Renderable {
 	public string $name;
 	public string $type;
 	public string $default = '';
+	public $value;
 
 	public function __construct(string $name, string $type = 'string', $default = '') {
 		$this->name = $name;
@@ -13,8 +14,8 @@ class Attribute implements Renderable {
 		$this->default = $default;
 	}
 
-	public function renderPhp(array $attributes = []): string {
-		return $attributes[$this->name] ?? $this->default ?? '';
+	public function renderPhp(BlockContract $block): string {
+		return $this->get();
 	}
 
 	public function renderReact(): string {
@@ -23,5 +24,13 @@ class Attribute implements Renderable {
 
 	public function renderReactSet(): string {
 		return sprintf('v => setAttributes({%s: v})', json_encode($this->name));
+	}
+
+	public function get() {
+		return $this->value ?? $this->default;
+	}
+
+	public function set($value) {
+		$this->value = $value;
 	}
 }

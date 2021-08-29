@@ -43,4 +43,15 @@ abstract class Block implements BlockContract {
 	public function getAttribute(string $name): Attribute {
 		return $this->blockAttributes->get($name);
 	}
+
+	public function setAttributes(array $attributes): BlockContract {
+		foreach ($attributes as $key => $value) {
+			$attribute = $this->getAttribute($key);
+			if ($attribute) {
+				$attribute->set($value);
+			}
+		}
+
+		return $this;
+	}
 }

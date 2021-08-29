@@ -11,8 +11,8 @@ class Wrap implements Renderable {
 		$this->element = $element;
 	}
 
-	public function renderPhp(array $attributes): string {
-		return $this->element->renderPhp($attributes);
+	public function renderPhp(BlockContract $block): string {
+		return $this->element->renderPhp($block);
 	}
 
 	public function renderReact(): string {

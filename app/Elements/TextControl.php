@@ -4,6 +4,7 @@ namespace BlockStub\Elements;
 
 use BlockStub\Attribute;
 use BlockStub\Renderable;
+use BlockStub\BlockContract;
 
 class TextControl implements Renderable {
 	protected Attribute $attribute;
@@ -12,7 +13,7 @@ class TextControl implements Renderable {
 		$this->attribute = $attribute;
 	}
 
-	public function renderPhp(array $attributes): string {
+	public function renderPhp(BlockContract $block): string {
 		return '';
 	}
 

@@ -4,6 +4,7 @@ namespace BlockStub\Elements;
 
 use BlockStub\Attribute;
 use BlockStub\Renderable;
+use BlockStub\BlockContract;
 
 abstract class Element implements Renderable {
 	use Traits\HasChildren;
@@ -34,8 +35,8 @@ abstract class Element implements Renderable {
 		return $this;
 	}
 
-	private function wrapPhp(string $content, array $attributes): string {
-		$attributes = $this->attributes->renderPhp($attributes);
+	private function wrapPhp(string $content, BlockContract $block): string {
+		$attributes = $this->attributes->renderPhp($block);
 		$attributes = $attributes ? ' ' . $attributes : '';
 
 		return "<{$this->tag}{$attributes}>{$content}</{$this->tag}>";
@@ -58,10 +59,10 @@ abstract class Element implements Renderable {
 		return sprintf('el(%s, %s, %s)', json_encode($this->tag), $attributes, $content);
 	}
 
-	public function renderPhp(array $attributes): string {
+	public function renderPhp(BlockContract $block): string {
 		return $this->wrapPhp(
-			$this->getChildren()->renderPhp($attributes),
-			$attributes
+			$this->getChildren()->renderPhp($block),
+			$block
 		);
 	}
 

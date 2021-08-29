@@ -3,6 +3,7 @@
 namespace BlockStub\Elements;
 
 use BlockStub\Renderable;
+use BlockStub\BlockContract;
 use BlockStub\Conditions\ConditionContract;
 
 class Condition implements Renderable {
@@ -15,8 +16,8 @@ class Condition implements Renderable {
 		$this->bootHasChildren();
 	}
 
-	public function renderPhp(array $attributes): string {
-		return $this->condition->evaluatePhp($attributes) ? $this->getChildren()->renderPhp($attributes) : '';
+	public function renderPhp(BlockContract $block): string {
+		return $this->condition->evaluatePhp($block) ? $this->getChildren()->renderPhp($block) : '';
 	}
 
 	public function renderReact(): string {
