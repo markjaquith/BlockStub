@@ -3,7 +3,7 @@
 namespace BlockStub;
 
 interface BlockContract {
-	public function render(): Elements\Element;
+	public function render(): RenderableHtml;
 	public function getHandle(): string;
 	public function getTitle(): string;
 	public function getAttributes(): array;

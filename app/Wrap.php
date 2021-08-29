@@ -2,14 +2,19 @@
 
 namespace BlockStub;
 
-use BlockStub\Elements\Element;
+use BlockStub\Elements\Nodes;
+use BlockStub\Elements\HtmlAttributes;
 
-class Wrap implements Renderable {
-	protected Element $element;
+class Wrap implements RenderableHtml {
+	protected RenderableHtml $element;
 
-	public function __construct(Element $element) {
+	public function __construct(RenderableHtml $element) {
 		$this->element = $element;
 	}
+
+	public function getTag(): string {
+		return $this->element->getTag();
+}
 
 	public function renderPhp(BlockContract $block): string {
 		return $this->element->renderPhp($block);
@@ -22,5 +27,13 @@ class Wrap implements Renderable {
 			$this->element->getAttributes()->renderReact($block),
 			$this->element->getChildren()->renderReact($block)
 		);
+	}
+
+	public function getChildren(): Nodes {
+		return $this->element->getChildren();
+	}
+
+	public function getAttributes(): HtmlAttributes {
+		return $this->element->getAttributes();
 	}
 }

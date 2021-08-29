@@ -15,7 +15,7 @@ class GreetingBlock extends Block {
 		],
 	];
 
-	public function render(): Element {
+	public function render(): RenderableHtml {
 		return P::make([
 			'Hello ',
 			B::makeEditable('name'),

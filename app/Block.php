@@ -24,7 +24,7 @@ abstract class Block implements BlockContract {
 		}
 	}
 
-	public function render(): Elements\Element {
+	public function render(): RenderableHtml {
 		return (new Elements\P)->addText('Extend the render() method');
 	}
 

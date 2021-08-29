@@ -4,11 +4,12 @@ namespace BlockStub\Elements;
 
 use BlockStub\Node;
 use BlockStub\BlockContract;
+use BlockStub\RenderableHtml;
 
-abstract class Element extends Node {
+abstract class Element extends Node implements RenderableHtml {
 	use Traits\HasChildren;
 
-	public string $tag = '';
+	protected string $tag = '';
 	protected HtmlAttributes $attributes;
 	protected ?string $editableAttribute = null;
 
@@ -17,6 +18,10 @@ abstract class Element extends Node {
 		$this->bootHasChildren();
 
 		$this->add($input);
+	}
+
+	public function getTag(): string {
+		return $this->tag;
 	}
 
 	static public function makeEditable(string $attribute): Element {
