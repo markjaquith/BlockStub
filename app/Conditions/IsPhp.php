@@ -9,7 +9,7 @@ class IsPhp implements ConditionContract {
 		return true;
 	}
 
-	public function evaluateReact(): string {
+	public function evaluateReact(BlockContract $block): string {
 		return "false";
 	}
 }

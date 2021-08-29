@@ -40,7 +40,7 @@ final class BlockFactory {
 		$dir = dirname($this->file);
 	
 		$zeroJs = '0.js';
-		$jsRender = $wrapElement->renderReact();
+		$jsRender = $wrapElement->renderReact($block);
 		$attributes = $block->getAttributes();
 		$jsAttributes = json_encode($attributes);
 		$jsTitle = json_encode($block->getTitle());

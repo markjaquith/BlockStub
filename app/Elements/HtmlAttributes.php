@@ -23,7 +23,7 @@ class HtmlAttributes implements Renderable {
 		return $this->attributes[$key] ?? null;
 	}
 
-	public function renderReact(): string {
+	public function renderReact(BlockContract $block): string {
 		return json_encode($this->mapHtmlAttributesToJavaScript($this->toArray()) ?: null);
 	}
 

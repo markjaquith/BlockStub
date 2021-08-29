@@ -18,7 +18,7 @@ class Attribute implements Renderable {
 		return $this->get();
 	}
 
-	public function renderReact(): string {
+	public function renderReact(Blockcontract $block): string {
 		return sprintf('attributes[%s] || ""', json_encode($this->name));
 	}
 

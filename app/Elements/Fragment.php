@@ -16,8 +16,8 @@ class Fragment implements Renderable {
 		return $this->getChildren()->renderPhp($block);
 	}
 
-	public function renderReact(): string {
-		return sprintf('el(F, null, %s)', $this->getChildren()->renderReact());
+	public function renderReact(BlockContract $block): string {
+		return sprintf('el(F, null, %s)', $this->getChildren()->renderReact($block));
 	}
 
 	static public function make(): self {

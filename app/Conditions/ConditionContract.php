@@ -6,5 +6,5 @@ use BlockStub\BlockContract;
 
 interface ConditionContract {
 	public function evaluatePhp(BlockContract $block): bool;
-	public function evaluateReact(): string;
+	public function evaluateReact(BlockContract $block): string;
 }

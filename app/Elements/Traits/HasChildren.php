@@ -25,7 +25,6 @@ trait HasChildren {
 		} elseif (is_null($node)) {
 			// Do nothing.
 		} else {
-			var_dump($node);
 			throw new \Exception('::add() can only accept Renderable, string, Renderable[], or string[]');
 		}
 

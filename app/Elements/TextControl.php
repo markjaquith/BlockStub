@@ -9,6 +9,7 @@ use BlockStub\BlockContract;
 class TextControl implements Renderable {
 	protected Attribute $attribute;
 
+	// TODO: Make this take a string.
 	public function __construct(Attribute $attribute) {
 		$this->attribute = $attribute;
 	}
@@ -17,7 +18,7 @@ class TextControl implements Renderable {
 		return '';
 	}
 
-	public function renderReact(): string {
+	public function renderReact(BlockContract $block): string {
 		$value = $this->attribute->renderReact();
 		$onChange = $this->attribute->renderReactSet();
 

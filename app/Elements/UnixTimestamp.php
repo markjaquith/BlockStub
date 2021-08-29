@@ -10,7 +10,7 @@ class UnixTimestamp implements Renderable {
 		return time();
 	}
 
-	public function renderReact(): string {
+	public function renderReact(BlockContract $block): string {
 		return <<<JS
 			el(() => {
 				const getTime = () => Math.floor(Date.now() / 1000)

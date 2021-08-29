@@ -15,12 +15,12 @@ class Wrap implements Renderable {
 		return $this->element->renderPhp($block);
 	}
 
-	public function renderReact(): string {
+	public function renderReact(BlockContract $block): string {
 		return sprintf(
 			'el(%s, wp.blockEditor.useBlockProps(%s || {}), %s)',
 			json_encode($this->element->tag),
-			$this->element->getAttributes()->renderReact(),
-			$this->element->getChildren()->renderReact()
+			$this->element->getAttributes()->renderReact($block),
+			$this->element->getChildren()->renderReact($block)
 		);
 	}
 }

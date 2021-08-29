@@ -22,7 +22,7 @@ class Nodes {
 		return implode('', array_map(fn ($node) => $node->renderPhp($block), $this->nodes));
 	}
 
-	public function renderReact(): string {
-		return '[' . implode(',', array_map(fn ($node) => $node->renderReact(), $this->nodes)) . ']';
+	public function renderReact(BlockContract $block): string {
+		return '[' . implode(',', array_map(fn ($node) => $node->renderReact($block), $this->nodes)) . ']';
 	}
 }

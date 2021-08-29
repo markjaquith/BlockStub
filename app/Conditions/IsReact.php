@@ -9,7 +9,7 @@ class IsReact implements ConditionContract {
 		return false;
 	}
 
-	public function evaluateReact(): string {
+	public function evaluateReact(BlockContract $block): string {
 		return "true";
 	}
 }

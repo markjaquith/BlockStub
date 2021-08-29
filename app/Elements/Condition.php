@@ -20,11 +20,11 @@ class Condition implements Renderable {
 		return $this->condition->evaluatePhp($block) ? $this->getChildren()->renderPhp($block) : '';
 	}
 
-	public function renderReact(): string {
+	public function renderReact(BlockContract $block): string {
 		return sprintf(
 			'(%s) && (%s)',
-			$this->condition->evaluateReact(),
-			$this->getChildren()->renderReact()
+			$this->condition->evaluateReact($block),
+			$this->getChildren()->renderReact($block)
 		);
 	}
 }

@@ -14,7 +14,7 @@ class Text implements Renderable {
 		return $this->text;
 	}
 
-	public function renderReact(): string {
+	public function renderReact(BlockContract $block): string {
 		return json_encode($this->text);
 	}
 }

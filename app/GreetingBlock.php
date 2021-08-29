@@ -16,7 +16,7 @@ class GreetingBlock extends Block {
 	public function render(): Elements\Element {
 		return new Elements\P([
 			'Hello ',
-			Elements\B::makeEditable($this->getAttribute('name')),
+			Elements\B::makeEditable('name'),
 			'!',
 		]);
 	}
