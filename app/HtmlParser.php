@@ -6,9 +6,11 @@ use BlockStub\Elements\{Text, Element};
 
 class HtmlParser {
 	private string $html;
+	private BlockContract $block;
 
-	public function __construct(string $html) {
+	public function __construct(string $html, BlockContract $block) {
 		$this->html = $html;
+		$this->block = $block;
 	}
 
 	public function renderNode(\DOMNode $node): Renderable {
@@ -24,10 +26,15 @@ class HtmlParser {
 					}
 				} else {
 					$xBind = $node->attributes->getNamedItem('x-bind');
+					$xText = $node->attributes->getNamedItem('x-text');
 					$el = Element::makeTag($node->nodeName)
 						->setAttributes($node->hasAttributes() ? $this->collectAttributes($node->attributes) : [])
 						->add($node->hasChildNodes() ? $this->renderNodes($node->childNodes) : null)
 						->editWith($xBind ? $xBind->value : null);
+
+					if ($xText) {
+						$el->add($this->block->getAttribute($xText->value));
+					}
 
 					return $el;
 				}
@@ -45,6 +52,7 @@ class HtmlParser {
 		$out = [];
 		$omit = [
 			'x-bind' => true,
+			'x-text' => true,
 		];
 
 		foreach ($attributes as $attribute) {

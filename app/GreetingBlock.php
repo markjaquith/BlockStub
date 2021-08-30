@@ -16,7 +16,7 @@ class GreetingBlock extends Block {
 
 	public function render(): RenderableHtml {
 		return $this->renderHtml(<<<HTML
-			<p>Hello <b x-bind="name"></b>!</p>
+			<p>Hello <b x-bind="name"></b>! (Your name is <span x-text="name"></span>)</p>
 		HTML);
 	}
 }

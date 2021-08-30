@@ -30,7 +30,7 @@ abstract class Block implements BlockContract {
 	}
 
 	public function renderHtml(string $html): RenderableHtml {
-		return (new HtmlParser($html))->render();
+		return (new HtmlParser($html, $this))->render();
 	}
 
 	public function getIcon(): string {
