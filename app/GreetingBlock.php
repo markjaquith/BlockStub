@@ -2,7 +2,7 @@
 
 namespace BlockStub;
 
-use BlockStub\Elements\{P, B};
+use BlockStub\Elements\{Element, P, B};
 
 class GreetingBlock extends Block {
 	protected string $title = 'Greeting';
