@@ -20,5 +20,6 @@ add_action('blockstub_init', function (BlockFactory $blocks) {
 	$blocks
 		->add(new UnixTimestampBlock)
 		->add(new AnnounceRenderingEngineBlock)
+		->add(new MagicHtmlBlock)
 		->add(new GreetingBlock);
 });

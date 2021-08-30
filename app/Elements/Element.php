@@ -35,11 +35,11 @@ class Element extends HtmlNode {
 		return $this;
 	}
 
-	static public function makeEditable(string $attribute): Element {
+	static public function makeEditable(?string $attribute): Element {
 		return (new static)->editWith($attribute);
 	}
 
-	public function editWith(string $attribute): Element {
+	public function editWith(?string $attribute): Element {
 		$this->editableAttribute = $attribute;
 
 		return $this;
@@ -97,5 +97,11 @@ class Element extends HtmlNode {
 
 	public function getAttributes(): HtmlAttributes {
 		return $this->attributes;
+	}
+
+	public function setAttributes(array $attributes): self {
+		$this->attributes->setMany($attributes);
+
+		return $this;
 	}
 }

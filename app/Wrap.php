@@ -23,7 +23,7 @@ class Wrap implements RenderableHtml {
 	public function renderReact(BlockContract $block): string {
 		return sprintf(
 			'el(%s, wp.blockEditor.useBlockProps(%s || {}), %s)',
-			json_encode($this->element->tag),
+			json_encode($this->element->getTag()),
 			$this->element->getAttributes()->renderReact($block),
 			$this->element->getChildren()->renderReact($block)
 		);

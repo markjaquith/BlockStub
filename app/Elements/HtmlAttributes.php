@@ -13,13 +13,21 @@ class HtmlAttributes implements Renderable {
 		return $this->attributes;
 	}
 
-	public function setAttribute(string $key, $value = self::VALUELESS): self {
+	public function set(string $key, $value = self::VALUELESS): self {
 		$this->attributes[$key] = $value;
 
 		return $this;
 	}
 
-	public function getAttribute(string $key): ?string {
+	public function setMany(array $attributes): self {
+		foreach ($attributes as $key => $value) {
+			$this->set($key, $value);
+		}
+
+		return $this;
+	}
+
+	public function get(string $key): ?string {
 		return $this->attributes[$key] ?? null;
 	}
 

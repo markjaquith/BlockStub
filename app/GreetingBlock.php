@@ -2,8 +2,6 @@
 
 namespace BlockStub;
 
-use BlockStub\Elements\{Element, P, B};
-
 class GreetingBlock extends Block {
 	protected string $title = 'Greeting';
 	protected string $handle = 'greeting';
@@ -17,10 +15,8 @@ class GreetingBlock extends Block {
 	];
 
 	public function render(): RenderableHtml {
-		return P::make([
-			'Hello ',
-			B::makeEditable('name'),
-			'!',
-		]);
+		return $this->renderHtml(<<<HTML
+			<p>Hello <b x-bind="name"></b>!</p>
+		HTML);
 	}
 }

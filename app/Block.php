@@ -29,6 +29,10 @@ abstract class Block implements BlockContract {
 		return (new Elements\P)->addText('Extend the render() method');
 	}
 
+	public function renderHtml(string $html): RenderableHtml {
+		return (new HtmlParser($html))->render();
+	}
+
 	public function getIcon(): string {
 		return $this->icon;
 	}
