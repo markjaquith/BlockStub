@@ -5,6 +5,7 @@ namespace BlockStub;
 abstract class Block implements BlockContract {
 	protected string $handle;
 	protected string $title;
+	protected string $icon = 'plugins-checked';
 	protected BlockAttributes $blockAttributes;
 	protected array $attributes = [];
 
@@ -26,6 +27,10 @@ abstract class Block implements BlockContract {
 
 	public function render(): RenderableHtml {
 		return (new Elements\P)->addText('Extend the render() method');
+	}
+
+	public function getIcon(): string {
+		return $this->icon;
 	}
 
 	public function getHandle(): string {

@@ -44,6 +44,7 @@ final class BlockFactory {
 		$attributes = $block->getAttributes();
 		$jsAttributes = json_encode($attributes);
 		$jsTitle = json_encode($block->getTitle());
+		$jsIcon = json_encode($block->getIcon());
 	
 		wp_register_script(
 			$handle . '-block-editor',
@@ -72,7 +73,7 @@ final class BlockFactory {
 
 				wp.blocks.registerBlockType($jsFullHandle, {
 					title: $jsTitle,
-					icon: 'plugins-checked',
+					icon: $jsIcon,
 					category: 'widgets',
 					attributes: $jsAttributes,
 					apiVersion: 2,

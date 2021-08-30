@@ -2,11 +2,12 @@
 
 namespace BlockStub;
 
-use BlockStub\Elements\{Element, P, B};
+use BlockStub\Elements\{P, B};
 
 class GreetingBlock extends Block {
 	protected string $title = 'Greeting';
 	protected string $handle = 'greeting';
+	protected string $icon = 'admin-users';
 
 	protected array $attributes = [
 		'name' => [

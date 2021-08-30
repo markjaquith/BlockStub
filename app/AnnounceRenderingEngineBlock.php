@@ -8,8 +8,9 @@ use BlockStub\Elements\{P, B};
 class AnnounceRenderingEngineBlock extends Block {
 	protected string $title = 'Announce Rendering Engine';
 	protected string $handle = 'rendering-engine';
+	protected string $icon = 'code-standards';
 
-	public function render(): Elements\Element {
+	public function render(): RenderableHtml {
 		$p = P::make('This sentence was rendered on both engines. ');
 		
 		// Chaining with array.

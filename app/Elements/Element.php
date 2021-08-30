@@ -2,11 +2,10 @@
 
 namespace BlockStub\Elements;
 
-use BlockStub\Node;
+use BlockStub\HtmlNode;
 use BlockStub\BlockContract;
-use BlockStub\RenderableHtml;
 
-abstract class Element extends Node implements RenderableHtml {
+abstract class Element extends HtmlNode {
 	use Traits\HasChildren;
 
 	protected string $tag = '';
