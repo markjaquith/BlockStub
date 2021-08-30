@@ -12,6 +12,7 @@ class Element extends HtmlNode {
 	protected string $tag = '';
 	protected HtmlAttributes $attributes;
 	protected ?string $editableAttribute = null;
+	protected bool $selfClosing = false;
 
 	public function __construct($input = null) {
 		$this->attributes = new HtmlAttributes();
@@ -47,6 +48,10 @@ class Element extends HtmlNode {
 	private function wrapPhp(string $content, BlockContract $block): string {
 		$attributes = $this->attributes->renderPhp($block);
 		$attributes = $attributes ? ' ' . $attributes : '';
+
+		if ($this->selfClosing) {
+			return "<{$this->tag}{$attributes} />";
+		}
 
 		return "<{$this->tag}{$attributes}>{$content}</{$this->tag}>";
 	}
