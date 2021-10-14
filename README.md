@@ -1,6 +1,6 @@
 # BlockStub
 
-This is an experiment. Inspired by conversations between [Helen Hou-Sandí](https://helen.blog/) and [Mark Jaquith](https://markjaquith.com/), this code was to explore new ways of creating blocks for WordPress that are simpler, more declarative, and less repetitive.
+This is an experiment. Inspired by conversations between [Helen Hou-Sandí](https://helen.blog/) and [Mark Jaquith](https://markjaquith.com/), this code was created to explore new ways of making blocks for WordPress that are simpler, more declarative, and less repetitive than custom-crafted React components.
 
 Helen write about the [thinking behind this idea](https://helen.blog/2021/08/exploring-custom-blocks-from-a-php-centric-developer-ux-point-of-view/) in depth, and you should absolutely read that to understand what this is all about.
 
